@@ -126,6 +126,11 @@ return { -- LSP Configuration & Plugins
           })
         end
 
+        --NOTE: ACTIVATE CSHARPLS
+        if client and client.name == 'csharp_ls' then
+          map('gd', require('csharpls_extended').lsp_definitions, '[G]oto [D]efinition')
+        end
+
         -- The following autocommand is used to enable inlay hints in your
         -- code, if the language server you are using supports them
         --
@@ -168,6 +173,13 @@ return { -- LSP Configuration & Plugins
       -- tsserver = {},
       --
 
+      csharp_ls = {
+        on_attach = function(client)
+          -- Disable formatting for `csharp_ls`
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+        end,
+      },
       vtsls = {},
       lua_ls = {
         -- cmd = {...},

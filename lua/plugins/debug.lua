@@ -23,10 +23,16 @@ return {
 
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
+    'Samsung/netcoredbg',
   },
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
+
+    -- Define custom breakpoint signs
+    vim.fn.sign_define('DapBreakpoint', { text = '🔴', texthl = 'Error', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapBreakpointCondition', { text = '🟠', texthl = 'WarningMsg', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapLogPoint', { text = '🔵', texthl = 'Debug', linehl = '', numhl = '' })
 
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
@@ -35,13 +41,21 @@ return {
 
       -- You can provide additional configuration to the handlers,
       -- see mason-nvim-dap README for more information
-      handlers = {},
+      handlers = {
+        function(config)
+          -- all sources with no handler get passed here
+
+          -- Keep original functionality
+          require('mason-nvim-dap').default_setup(config)
+        end,
+      },
 
       -- You'll need to check that you have the required things installed
       -- online, please don't ask me how to install them :)
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        'netcodedbg',
       },
     }
 
