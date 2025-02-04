@@ -126,6 +126,14 @@ return { -- LSP Configuration & Plugins
           })
         end
 
+        --NOTE: ACTIVATE OMNISHARP
+        -- if client and client.name == 'omnisharp' then
+        --   map('gd', require('omnisharp_extended').lsp_definition, '[G]oto [D]efinition')
+        --   map('gr', require('omnisharp_extended').lsp_references, '[G]oto [R]eferences')
+        --   map('gI', require('omnisharp_extended').lsp_implementation, '[G]oto [I]mplementation')
+        --   map('<leader>D', require('omnisharp_extended').lsp_type_definition, 'Type [D]efinition')
+        -- end
+
         --NOTE: ACTIVATE CSHARPLS
         if client and client.name == 'csharp_ls' then
           map('gd', require('csharpls_extended').lsp_definitions, '[G]oto [D]efinition')
@@ -173,6 +181,7 @@ return { -- LSP Configuration & Plugins
       -- tsserver = {},
       --
 
+      -- omnisharp = {},
       csharp_ls = {
         on_attach = function(client)
           -- Disable formatting for `csharp_ls`
