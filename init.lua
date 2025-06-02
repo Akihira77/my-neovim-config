@@ -42,5 +42,14 @@ require('lazy').setup({
   },
 })
 
+require('git-conflict').setup {
+  default_mappings = false, -- biar kita set sendiri keymap-nya
+  disable_diagnostics = true,
+  highlights = {
+    incoming = 'DiffText',
+    current = 'DiffAdd',
+  },
+}
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

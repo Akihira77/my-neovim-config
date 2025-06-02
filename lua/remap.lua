@@ -37,3 +37,22 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- Buka quickfix list untuk konflik
+vim.keymap.set('n', '<leader>gc', '<cmd>GitConflictListQf<CR>', opts)
+
+-- Pilih OURS
+vim.keymap.set('n', '<leader>go', '<cmd>GitConflictChooseOurs<CR>', opts)
+
+-- Pilih THEIRS
+vim.keymap.set('n', '<leader>gt', '<cmd>GitConflictChooseTheirs<CR>', opts)
+
+-- Pilih NONE (hapus semua dan gabungkan manual)
+vim.keymap.set('n', '<leader>gn', '<cmd>GitConflictChooseNone<CR>', opts)
+
+-- Pilih BOTH (gabung ours dan theirs)
+vim.keymap.set('n', '<leader>gb', '<cmd>GitConflictChooseBoth<CR>', opts)
+
+-- Pindah ke konflik selanjutnya/sebelumnya
+vim.keymap.set('n', ']x', '<cmd>GitConflictNextConflict<CR>', opts)
+vim.keymap.set('n', '[x', '<cmd>GitConflictPrevConflict<CR>', opts)

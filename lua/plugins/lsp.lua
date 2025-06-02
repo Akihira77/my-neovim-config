@@ -182,13 +182,13 @@ return { -- LSP Configuration & Plugins
       --
 
       -- omnisharp = {},
-      csharp_ls = {
-        on_attach = function(client)
-          -- Disable formatting for `csharp_ls`
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.documentRangeFormattingProvider = false
-        end,
-      },
+      -- csharp_ls = {
+      --   on_attach = function(client)
+      --     -- Disable formatting for `csharp_ls`
+      --     client.server_capabilities.documentFormattingProvider = false
+      --     client.server_capabilities.documentRangeFormattingProvider = false
+      --   end,
+      -- },
       vtsls = {},
       lua_ls = {
         -- cmd = {...},
