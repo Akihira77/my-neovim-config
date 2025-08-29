@@ -76,3 +76,12 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.api.nvim_clear_autocmds { event = 'BufWritePre', pattern = '*.cs' }
+vim.diagnostic.config { virtual_text = true }
+-- vim.api.nvim_create_autocmd('ColorScheme', {
+--   callback = function()
+--     vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+--     vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
+--     vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = 'none' })
+--     vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = 'none' })
+--   end,
+-- })

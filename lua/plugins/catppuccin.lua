@@ -7,6 +7,10 @@ return { -- You can easily change to a different colorscheme.
     -- You can configure highlights by doing something like:
     vim.cmd.hi 'Comment gui=none'
 
+    vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none', fg = 'none' })
+    vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none', fg = 'none' })
+    vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = 'none', fg = 'none' })
+    vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = 'none', fg = 'none' })
     vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = 'blue' })
     vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = 'yellow' })
     vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = 'magenta' })

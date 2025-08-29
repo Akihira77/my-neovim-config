@@ -10,9 +10,9 @@ return { -- LSP Configuration & Plugins
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     { 'j-hui/fidget.nvim', opts = {} },
 
-    -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
+    -- `neodev` or `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
-    { 'folke/neodev.nvim', opts = {} },
+    { 'folke/lazydev.nvim', ft = 'lua', opts = {} },
   },
   config = function()
     -- Brief aside: **What is LSP?**
@@ -50,7 +50,7 @@ return { -- LSP Configuration & Plugins
         -- NOTE: Remember that Lua is a real programming language, and as such it is possible
         -- to define small helper and utility functions so you don't have to repeat yourself.
         --
-        -- In this case, we create a function that lets us more easily define mappings specific
+        -- In this case, we create a function that lets us more easily define mappings specificlsp
         -- for LSP related items. It sets the mode, buffer and description for us each time.
         local map = function(keys, func, desc)
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
@@ -200,7 +200,10 @@ return { -- LSP Configuration & Plugins
               callSnippet = 'Replace',
             },
             -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-            -- diagnostics = { disable = { 'missing-fields' } },
+            diagnostics = {
+              -- disable = { 'missing-fields' },
+              globals = { 'vim' },
+            },
           },
         },
       },
