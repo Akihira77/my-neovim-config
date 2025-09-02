@@ -13,6 +13,17 @@ return { -- LSP Configuration & Plugins
     -- `neodev` or `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
     { 'folke/lazydev.nvim', ft = 'lua', opts = {} },
+
+    {
+      -- Add the blade-nav.nvim plugin which provides Goto File capabilities
+      -- for Blade files.
+      'ricardoramirezr/blade-nav.nvim',
+      dependencies = {
+        'hrsh7th/nvim-cmp',
+      },
+      ft = { 'blade', 'php' },
+      opts = {},
+    },
   },
   config = function()
     -- Brief aside: **What is LSP?**

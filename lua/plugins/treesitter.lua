@@ -22,6 +22,25 @@ return {
     indent = { enable = true, disable = { 'ruby' } },
   },
   config = function(_, opts)
+    vim.filetype.add {
+      pattern = {
+        ['.*%.blade%.php'] = 'blade',
+      },
+    }
+
+    local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+
+    ---@diagnostic disable-next-line: inject-field
+    parser_config.blade = {
+      install_info = {
+        url = 'https://github.com/EmranMR/tree-sitter-blade', -- Blade parser
+        files = { 'src/parser.c' },
+        branch = 'main',
+        requires_generate_from_grammar = true,
+      },
+      filetype = 'blade',
+    }
+
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
     -- Prefer git instead of curl in order to improve connectivity in some environments
