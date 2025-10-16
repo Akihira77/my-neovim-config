@@ -32,8 +32,10 @@ return { -- Autoformat
       -- is found.
       javascript = { 'prettierd', stop_after_first = true },
       typescript = { 'prettierd', stop_after_first = true },
+      html = { 'prettierd', stop_after_first = true },
       go = { 'gopls' },
       blade = { 'blade-formatter' },
+      php = { 'php_cs_fixer' },
     },
     formatters = {
       blade_formatter = {
@@ -41,6 +43,11 @@ return { -- Autoformat
         args = { '--stdin' }, -- or {} to pass file path instead
         stdin = true, -- try setting to false if it still hangs
         timeout_ms = 5000,
+      },
+      php_cs_fixer = {
+        command = 'php-cs-fixer',
+        args = { 'fix', '--quiet', '$FILENAME' },
+        stdin = false,
       },
     },
   },
